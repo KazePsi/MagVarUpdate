@@ -29,9 +29,7 @@ jobs:
       - name: Merge upstream changes if needed
         if: steps.diffcheck.outputs.changed == 'yes'
         run: |
-          git fetch upstream exp
-          git checkout -B exp upstream/exp
-          git push origin exp --force
+          git merge upstream/exp --allow-unrelated-histories
           echo "✅ Merged upstream changes"
 
       - name: Setup Node.js
