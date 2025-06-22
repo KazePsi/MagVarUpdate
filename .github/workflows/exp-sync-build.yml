@@ -17,7 +17,7 @@ jobs:
 
       - name: Add upstream remote
         run: |
-          git remote add upstream https://github.com/YOUR-MAIN-ACCOUNT/REPO-NAME.git
+          git remote add upstream https://github.com/PsionicZephyr/MagVarUpdate.git
           git fetch upstream
 
       - name: Compare upstream/exp with local exp
