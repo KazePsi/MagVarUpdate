@@ -3,7 +3,7 @@ name: bundle
 on:
   push:
     branches:
-      - master
+      - exp
     paths-ignore:
       - artifact/**
   workflow_dispatch:
