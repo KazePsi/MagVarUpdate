@@ -2,7 +2,7 @@ name: Sync & Build EXP
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # 每5分钟运行一次
+    - cron: '*/60 * * * *' # 每60分钟运行一次
   workflow_dispatch:
 
 jobs:
