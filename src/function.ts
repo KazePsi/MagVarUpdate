@@ -76,18 +76,18 @@ export function parseCommandValue(valStr: string): any {
         // 那么它就是一个普通的未加引号的字符串。
     }
 
-    // 实验性功能，暂不启用
+    // 实验性功能
     // 尝试将字符串解析为日期对象，用于传入_.add直接以毫秒数更新时间，如 `_.add('当前时间', 10 * 60 * 1000);`
     // 此检查用于识别日期字符串（例如 "2024-01-01T12:00:00Z"）
     // `isNaN(Number(trimmed))`确保纯数字字符串（如 "12345"）不会被错误地解析为日期
-    /*
+    
     if (isNaN(Number(trimmed))) {
         const potentialDate = new Date(trimQuotesAndBackslashes(trimmed));
         if (!isNaN(potentialDate.getTime())) {
             return potentialDate;
         }
     }
-    */
+    
 
     try {
         // 尝试 YAML.parse
