@@ -1,9 +1,12 @@
-name: Sync & Build EXP
+name: Sync & Build Branch
 
 on:
-  schedule:
-    - cron: '*/60 * * * *' # 每60分钟运行一次
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Target branch to sync and build (e.g., exp or sandbox)'
+        required: true
+        default: 'exp'
 
 jobs:
   sync-build:
@@ -12,17 +15,17 @@ jobs:
       - name: Checkout your fork
         uses: actions/checkout@v4
         with:
-          ref: exp
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Add upstream remote
         run: |
           git remote add upstream https://github.com/PsionicZephyr/MagVarUpdate.git
           git fetch upstream
 
-      - name: Sync exp with upstream
+      - name: Sync ${{ github.event.inputs.branch }} with upstream
         run: |
-          git checkout -B exp origin/exp || git checkout -b exp
-          git reset --hard upstream/exp
+          git checkout -B ${{ github.event.inputs.branch }} origin/${{ github.event.inputs.branch }} || git checkout -b ${{ github.event.inputs.branch }}
+          git reset --hard upstream/${{ github.event.inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
